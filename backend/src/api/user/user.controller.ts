@@ -37,10 +37,7 @@ export class UserController {
   @Roles(Role.ADMIN)
   @UseGuards(JwtAuthGuard)
   @UseInterceptors(ClassSerializerInterceptor)
-  private updateRole(
-    @Body() body: updateRoleDto,
-    @Req() req: Request,
-  ): Promise<User> {
-    return this.service.updateRole(body, req);
+  private updateRole(@Body() body: updateRoleDto): Promise<User> {
+    return this.service.updateRole(body);
   }
 }

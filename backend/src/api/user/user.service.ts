@@ -18,7 +18,7 @@ export class UserService {
     return this.repository.save(user);
   }
 
-  public async updateRole(body: updateRoleDto, req: Request): Promise<User> {
+  public async updateRole(body: updateRoleDto): Promise<User> {
     const user = await this.repository.findOne({ where: { id: body.userId } });
     user.roles = body.roles;
 
