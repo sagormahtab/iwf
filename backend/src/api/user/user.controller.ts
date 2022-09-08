@@ -10,9 +10,12 @@ import {
 } from '@nestjs/common';
 import { Request } from 'express';
 import { JwtAuthGuard } from '@/api/user/auth/auth.guard';
-import { UpdateNameDto } from './user.dto';
-import { User } from './user.entity';
+import { UpdateNameDto, updateRoleDto } from './user.dto';
+import { User } from './entities/user.entity';
 import { UserService } from './user.service';
+import { RolesGuard } from '@/api/user/roles.guard';
+import { Roles } from './roles.decorator';
+import { Role } from './entities/role.enum';
 
 @Controller('user')
 export class UserController {
@@ -27,5 +30,17 @@ export class UserController {
     @Req() req: Request,
   ): Promise<User> {
     return this.service.updateName(body, req);
+  }
+
+  @Put('role')
+  @UseGuards(RolesGuard)
+  @Roles(Role.ADMIN)
+  @UseGuards(JwtAuthGuard)
+  @UseInterceptors(ClassSerializerInterceptor)
+  private updateRole(
+    @Body() body: updateRoleDto,
+    @Req() req: Request,
+  ): Promise<User> {
+    return this.service.updateRole(body, req);
   }
 }

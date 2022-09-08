@@ -1,3 +1,4 @@
+import { RolesGuard } from '@/api/user/roles.guard';
 import { TypeOrmConfigService } from './shared/typeorm/typeorm.service';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
@@ -6,6 +7,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ApiModule } from './api/api.module';
 import { getEnvPath } from './common/helper/env.helper';
+import { APP_GUARD } from '@nestjs/core';
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 

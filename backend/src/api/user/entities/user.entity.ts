@@ -1,21 +1,25 @@
+import { Role } from './role.enum';
 import { Exclude } from 'class-transformer';
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
-  public id!: number;
+  id!: number;
 
   @Column({ type: 'varchar' })
-  public email!: string;
+  email!: string;
 
   @Exclude()
   @Column({ type: 'varchar' })
-  public password!: string;
+  password!: string;
 
   @Column({ type: 'varchar', nullable: true })
-  public name: string | null;
+  name: string | null;
+
+  @Column({ type: 'varchar', array: true, default: [Role.USER] })
+  roles: Role[];
 
   @Column({ type: 'timestamp', nullable: true, default: null })
-  public lastLoginAt: Date | null;
+  lastLoginAt: Date | null;
 }
