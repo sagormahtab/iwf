@@ -8,6 +8,7 @@ import { AppService } from './app.service';
 import { ApiModule } from './api/api.module';
 import { getEnvPath } from './common/helper/env.helper';
 import { APP_GUARD } from '@nestjs/core';
+import { BuildingModule } from './building/building.module';
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
@@ -21,6 +22,7 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
       useClass: TypeOrmConfigService,
     }),
     ApiModule,
+    BuildingModule,
   ],
   controllers: [AppController],
   providers: [AppService],
