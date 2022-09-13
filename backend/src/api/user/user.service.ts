@@ -10,6 +10,11 @@ export class UserService {
   @InjectRepository(User)
   private readonly repository: Repository<User>;
 
+  public getMe(req: Request): User {
+    const user: User = <User>req.user;
+    return user;
+  }
+
   public async updateName(body: UpdateNameDto, req: Request): Promise<User> {
     const user: User = <User>req.user;
 

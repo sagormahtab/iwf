@@ -7,6 +7,7 @@ import {
   Put,
   Body,
   Inject,
+  Get,
 } from '@nestjs/common';
 import { Request } from 'express';
 import { JwtAuthGuard } from '@/api/user/auth/auth.guard';
@@ -21,6 +22,13 @@ import { Role } from './entities/role.enum';
 export class UserController {
   @Inject(UserService)
   private readonly service: UserService;
+
+  @Get('me')
+  @UseGuards(JwtAuthGuard)
+  @UseInterceptors(ClassSerializerInterceptor)
+  private getMe(@Req() req: Request): User {
+    return this.service.getMe(req);
+  }
 
   @Put('name')
   @UseGuards(JwtAuthGuard)

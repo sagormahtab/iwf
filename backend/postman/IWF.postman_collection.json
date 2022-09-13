@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "539cb8e0-394c-4c95-b1a0-43673141a18f",
+		"_postman_id": "229d743c-1a70-480a-a280-1574768596da",
 		"name": "IWF",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "23193211"
+		"_exporter_id": "13204208"
 	},
 	"item": [
 		{
@@ -24,14 +24,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/auth/register",
-							"protocol": "http",
+							"raw": "{{URL}}auth/register",
 							"host": [
-								"localhost"
+								"{{URL}}auth"
 							],
-							"port": "3000",
 							"path": [
-								"auth",
 								"register"
 							]
 						}
@@ -65,14 +62,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/auth/login",
-							"protocol": "http",
+							"raw": "{{URL}}auth/login",
 							"host": [
-								"localhost"
+								"{{URL}}auth"
 							],
-							"port": "3000",
 							"path": [
-								"auth",
 								"login"
 							]
 						}
@@ -104,14 +98,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/auth/refresh",
-							"protocol": "http",
+							"raw": "{{URL}}auth/refresh",
 							"host": [
-								"localhost"
+								"{{URL}}auth"
 							],
-							"port": "3000",
 							"path": [
-								"auth",
 								"refresh"
 							]
 						}
@@ -148,14 +139,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/user/name",
-							"protocol": "http",
+							"raw": "{{URL}}user/name",
 							"host": [
-								"localhost"
+								"{{URL}}user"
 							],
-							"port": "3000",
 							"path": [
-								"user",
 								"name"
 							]
 						}
@@ -187,15 +175,39 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/user/role",
-							"protocol": "http",
+							"raw": "{{URL}}user/role",
 							"host": [
-								"localhost"
+								"{{URL}}user"
 							],
-							"port": "3000",
 							"path": [
-								"user",
 								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}user/me",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"me"
 							]
 						}
 					},
@@ -231,14 +243,9 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/building",
-							"protocol": "http",
+							"raw": "{{URL}}building",
 							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"building"
+								"{{URL}}building"
 							]
 						}
 					},
@@ -260,14 +267,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/building",
-							"protocol": "http",
+							"raw": "{{URL}}building",
 							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"building"
+								"{{URL}}building"
 							]
 						}
 					},
@@ -289,14 +291,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/building/1",
-							"protocol": "http",
+							"raw": "{{URL}}building/1",
 							"host": [
-								"localhost"
+								"{{URL}}building"
 							],
-							"port": "3000",
 							"path": [
-								"building",
 								"1"
 							]
 						}
@@ -328,14 +327,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/building/1",
-							"protocol": "http",
+							"raw": "{{URL}}building/1",
 							"host": [
-								"localhost"
+								"{{URL}}building"
 							],
-							"port": "3000",
 							"path": [
-								"building",
 								"1"
 							]
 						}
@@ -358,14 +354,11 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/building/1",
-							"protocol": "http",
+							"raw": "{{URL}}building/1",
 							"host": [
-								"localhost"
+								"{{URL}}building"
 							],
-							"port": "3000",
 							"path": [
-								"building",
 								"1"
 							]
 						}
