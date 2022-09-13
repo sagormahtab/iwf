@@ -1,5 +1,5 @@
 import { CreateBuildingDto, UpdateBuildingDto } from './building.dto';
-import { Buidling } from './entities/buidling.entity';
+import { Building } from './entities/building.entity';
 import { PaginationQueryDto } from './../common/dto/pagination.query.dto';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -9,8 +9,8 @@ import { Country } from './entities/country.entity';
 @Injectable()
 export class BuildingService {
   constructor(
-    @InjectRepository(Buidling)
-    private readonly buildingRepository: Repository<Buidling>,
+    @InjectRepository(Building)
+    private readonly buildingRepository: Repository<Building>,
     @InjectRepository(Country)
     private readonly countryRepository: Repository<Country>,
   ) {}

@@ -1,14 +1,16 @@
+import { Floor } from './../../api/floor/entities/floor.entity';
 import { Country } from './country.entity';
 import {
   Column,
   Entity,
   JoinColumn,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
 @Entity()
-export class Buidling {
+export class Building {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -21,4 +23,7 @@ export class Buidling {
   @OneToOne(() => Country, { cascade: true })
   @JoinColumn()
   country: Country;
+
+  @OneToMany(() => Floor, (floor) => floor.building)
+  floors: Floor[];
 }
