@@ -1,6 +1,5 @@
-import { JwtAuthGuard } from './../api/user/auth/auth.guard';
+import { JwtAuthGuard } from '@/api/user/auth/auth.guard';
 import { CreateBuildingDto, UpdateBuildingDto } from './building.dto';
-import { PaginationQueryDto } from './../common/dto/pagination.query.dto';
 import { BuildingService } from './building.service';
 import {
   Body,
@@ -19,6 +18,7 @@ import {
 import { Roles } from '@/api/user/roles.decorator';
 import { Role } from '@/api/user/entities/role.enum';
 import { RolesGuard } from '@/api/user/roles.guard';
+import { PaginationQueryDto } from '@/common/dto/pagination.query.dto';
 
 @Controller('building')
 @UseGuards(RolesGuard)

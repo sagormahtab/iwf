@@ -1,4 +1,4 @@
-import { Building } from './../../../building/entities/building.entity';
+import { Building } from "@/api/building/entities/building.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()

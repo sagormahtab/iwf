@@ -3,7 +3,7 @@ import { IsNumber, IsOptional, IsString } from 'class-validator';
 export class CreateFloorDto {
   @IsString()
   @IsOptional()
-  name: string;
+  floorName: string;
 
   @IsNumber()
   floorNumber: number;

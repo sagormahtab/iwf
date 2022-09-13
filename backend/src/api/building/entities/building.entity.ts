@@ -1,4 +1,3 @@
-import { Floor } from './../../api/floor/entities/floor.entity';
 import { Country } from './country.entity';
 import {
   Column,
@@ -8,6 +7,7 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Floor } from '@/api/floor/entities/floor.entity';
 
 @Entity()
 export class Building {
