@@ -1,5 +1,6 @@
 import { Building } from "@/api/building/entities/building.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Room } from "@/api/room/entities/room.entity";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Floor {
@@ -13,5 +14,8 @@ export class Floor {
   floorName?: string;
 
   @ManyToOne(() => Building, (building) => building.floors)
-  building: Building
+  building: Building;
+
+  @OneToMany(() => Room, (room) => room.floor)
+  rooms: Room[];
 }
