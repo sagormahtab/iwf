@@ -1,9 +1,30 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { JwtAuthGuard } from './../user/auth/auth.guard';
+import { Role } from './../user/entities/role.enum';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+  UseInterceptors,
+  ClassSerializerInterceptor,
+  Query,
+} from '@nestjs/common';
 import { RoomService } from './room.service';
 import { CreateRoomDto } from './dto/create-room.dto';
 import { UpdateRoomDto } from './dto/update-room.dto';
+import { RolesGuard } from '../user/roles.guard';
+import { Roles } from '../user/roles.decorator';
+import { PaginationQueryDto } from '@/common/dto/pagination.query.dto';
 
 @Controller('room')
+@UseGuards(RolesGuard)
+@Roles(Role.ADMIN)
+@UseGuards(JwtAuthGuard)
+@UseInterceptors(ClassSerializerInterceptor)
 export class RoomController {
   constructor(private readonly roomService: RoomService) {}
 
@@ -13,8 +34,8 @@ export class RoomController {
   }
 
   @Get()
-  findAll() {
-    return this.roomService.findAll();
+  findAll(@Query() paginationQuery: PaginationQueryDto) {
+    return this.roomService.findAll(paginationQuery);
   }
 
   @Get(':id')

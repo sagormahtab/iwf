@@ -12,14 +12,15 @@ import {
   UseInterceptors,
   ClassSerializerInterceptor,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { FloorService } from './floor.service';
 import { CreateFloorDto } from './dto/create-floor.dto';
 import { UpdateFloorDto } from './dto/update-floor.dto';
 import { Roles } from '../user/roles.decorator';
+import { PaginationQueryDto } from '@/common/dto/pagination.query.dto';
 
 @Controller('floor')
-@Controller('building')
 @UseGuards(RolesGuard)
 @Roles(Role.ADMIN)
 @UseGuards(JwtAuthGuard)
@@ -33,8 +34,8 @@ export class FloorController {
   }
 
   @Get()
-  findAll() {
-    return this.floorService.findAll();
+  findAll(@Query() paginationQuery: PaginationQueryDto) {
+    return this.floorService.findAll(paginationQuery);
   }
 
   @Get(':id')

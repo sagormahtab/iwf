@@ -1,5 +1,12 @@
-import { Floor } from "@/api/floor/entities/floor.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Floor } from '@/api/floor/entities/floor.entity';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Coordinate } from './coordinate.entity';
 
 @Entity()
 export class Room {
@@ -18,13 +25,9 @@ export class Room {
   @Column()
   width: number;
 
-  @Column({type: 'double precision'})
-  coordX: number;
-
-  @Column({type: 'double precision'})
-  coordY: number;
-
   @ManyToOne(() => Floor, (floor) => floor.rooms)
   floor: Floor;
 
+  @OneToMany(() => Coordinate, (coord) => coord.room)
+  coordinates: Coordinate[];
 }
