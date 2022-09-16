@@ -6,7 +6,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ApiModule } from './api/api.module';
 import { getEnvPath } from './common/helper/env.helper';
-import { BuildingModule } from './api/building/building.module';
 
 const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
 
@@ -20,7 +19,6 @@ const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
       useClass: TypeOrmConfigService,
     }),
     ApiModule,
-    BuildingModule,
   ],
   controllers: [AppController],
   providers: [AppService],

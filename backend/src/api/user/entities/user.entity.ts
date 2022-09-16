@@ -17,8 +17,8 @@ export class User extends BaseEntity {
   @Column({ type: 'varchar', nullable: true })
   name: string | null;
 
+  @Column({ type: 'varchar', array: true, default: [Role.ADMIN] })
   // @Column({ type: 'varchar', array: true, default: [Role.USER] })
-  @Column({ type: 'varchar', array: true, default: [Role.USER] })
   roles: Role[];
 
   @Column({ type: 'timestamp', nullable: true, default: null })

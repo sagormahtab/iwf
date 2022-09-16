@@ -16,6 +16,8 @@ async function bootstrap() {
     }),
   );
 
+  app.enableCors();
+
   await app.listen(port, () => {
     console.log('[WEB]', `http://localhost:${port}`);
   });

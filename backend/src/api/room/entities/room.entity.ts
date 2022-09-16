@@ -6,7 +6,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Coordinate } from './coordinate.entity';
+import { Coordinate } from '../coordinate/entities/coordinate.entity';
 
 @Entity()
 export class Room {
